@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.king.myboot.mapper.EmpMapper">
+    <!--用户注册信息-->
+    <select id="selectEmpAll" resultType="emp">
+        select *
+        from t_emp;
+    </select>
+
+    <insert id="insertAll" parameterType="emp">
+        insert into t_emp(name, salary, age, bir)
+        VALUES (#{name}, #{salary}, #{age}, #{bir});
+    </insert>
+
+    <delete id="deleteEmpId" parameterType="int">
+        delete
+        from t_emp
+        where id = #{id};
+    </delete>
+
+    <select id="selectById" resultType="emp" parameterType="int">
+        select *
+        from t_emp
+        where id = #{id}
+    </select>
+
+    <insert id="updateAll" parameterType="emp">
+        update t_emp
+        set name=#{name},
+            salary=#{salary},
+            age=#{age},
+            bir=#{bir}
+        where id = #{id}
+    </insert>
+</mapper>
